@@ -28,4 +28,4 @@ jobs:
           export ORG_NAME="kamilchodola"
           export REPO_NAME="wait-for-workflow-action"
           export REF="main"
-          ./wait-for-workflow.sh
+          ./scripts/wait-for-workflow.sh
