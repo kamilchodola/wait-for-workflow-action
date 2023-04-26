@@ -1,5 +1,7 @@
 # Wait for Workflow Action
 
+[![Test WaitForWorkflow](https://github.com/kamilchodola/wait-for-workflow-action/actions/workflows/test.yml/badge.svg)](https://github.com/kamilchodola/wait-for-workflow-action/actions/workflows/test.yml)
+
 This GitHub Action waits for a specified workflow to complete before proceeding with the next steps in your workflow. It is useful when you have dependent workflows and want to ensure that one completes successfully before continuing with the next. For example, you might want to ensure that a build or test workflow finishes successfully before starting a deployment workflow.
 
 ## Inputs
