@@ -28,8 +28,8 @@ else
   echo "ℹ️ Workflow ID: $workflow_id"
 
   # Wait for the workflow to be triggered
-  echo "⏳ Waiting for the workflow to be triggered..."
   while true; do
+    echo "⏳ Waiting for the workflow to be triggered..."
     response=$(curl -s -H "Accept: application/vnd.github+json" -H "Authorization: token $GITHUB_TOKEN" \
       "https://api.github.com/repos/${ORG_NAME}/${REPO_NAME}/actions/workflows/${workflow_id}/runs")
     if echo "$response" | grep -q "API rate limit exceeded"; then
@@ -59,8 +59,8 @@ else
 fi
 
 # Wait for the triggered workflow to complete and check its conclusion
-echo "⌛ Waiting for the workflow to complete..."
 while true; do
+  echo "⌛ Waiting for the workflow to complete..."
   run_data=$(curl -s -H "Accept: application/vnd.github+json" -H "Authorization: token $GITHUB_TOKEN" \
     "https://api.github.com/repos/${ORG_NAME}/${REPO_NAME}/actions/runs/$run_id")
   status=$(echo "$run_data" | jq -r '.status')
