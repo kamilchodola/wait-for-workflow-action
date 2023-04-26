@@ -13,5 +13,5 @@ jobs:
       - name: Run a basic shell script
         run: |
           echo "Starting triggered workflow..."
-          sleep 60
+          sleep 180
           echo "Triggered workflow completed successfully!"
