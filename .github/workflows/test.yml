@@ -21,7 +21,7 @@ jobs:
 
       - name: Wait for the triggered workflow to complete
         run: |
-          chmod +x wait-for-workflow.sh
+          chmod +x scripts/wait-for-workflow.sh
           export GITHUB_TOKEN="${{ secrets.REPOSITORY_DISPATCH_TOKEN }}"
           export WORKFLOW_ID="to_be_triggered"
           export MAX_WAIT_MINUTES="3"
