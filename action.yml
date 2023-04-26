@@ -18,7 +18,7 @@ inputs:
     description: 'GitHub repository name'
     required: true
   ref:
-    description: 'Branch reference'
+    description: 'Branch reference (if empty, ref selected for trigger would be taken)'
     required: false
     default: ''
 runs:
