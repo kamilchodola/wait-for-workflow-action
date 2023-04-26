@@ -5,7 +5,15 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+    inputs:
+      ref:
+        description: 'branch'
+        required: false
+        default: ''
+      run_id:
+        description: 'run_id for test'
+        required: false
+        default: ''
 jobs:
   test_workflow_dispatch:
     runs-on: ubuntu-latest
@@ -25,8 +33,9 @@ jobs:
           chmod +x scripts/wait-for-workflow.sh
           export GITHUB_TOKEN="${{ secrets.REPOSITORY_DISPATCH_TOKEN }}"
           export WORKFLOW_ID="to_be_triggered.yml"
+          export RUN_ID="${{ inputs.run_id }}"
           export MAX_WAIT_MINUTES="3"
           export ORG_NAME="kamilchodola"
           export REPO_NAME="wait-for-workflow-action"
-          export REF="main"
+          export REF="${{ inputs.ref }}"
           ./scripts/wait-for-workflow.sh
