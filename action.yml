@@ -36,4 +36,4 @@ runs:
         MAX_WAIT_MINUTES: ${{ inputs.max_wait_minutes }}
         ORG_NAME: ${{ inputs.organization }}
         REPO_NAME: ${{ inputs.repository }}
-        REF: ${{ inputs.ref }
+        REF: ${{ inputs.ref || github.ref }}
