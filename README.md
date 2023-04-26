@@ -9,7 +9,8 @@ This GitHub Action waits for a specified workflow to complete before proceeding 
 | Input            | Description                                         | Required | Default |
 |------------------|-----------------------------------------------------|----------|---------|
 | `GITHUB_TOKEN`   | GitHub token to access the repository and its APIs  | Yes      |         |
-| `workflow_id`    | ID of the workflow to wait for                      | Yes      |         |
+| `workflow_id`    | ID of the workflow to wait for                      | No       |         |
+| `run_id`         | If provided will wait for workflow run with specified id                     | No       |         |
 | `max_wait_minutes`| Maximum wait time in minutes before giving up      | No       | 3       |
 | `organization`   | Organization name where the repository is located   | Yes      |         |
 | `repository`     | Repository name to monitor for the workflow run     | Yes      |         |
@@ -43,8 +44,22 @@ To use this action, add it to your workflow file with the appropriate inputs:
   uses:  kamilchodola/wait-for-workflow-action@v1
   with:
     GITHUB_TOKEN: ${{ secrets.REPOSITORY_DISPATCH_TOKEN }}
-    workflow_id: '1234567'
+    workflow_id: 'workflow_name.yml'
     max_wait_minutes: '3'
+    organization: 'your-organization'
+    repository: 'your-repository'
+    ref: ${{ github.ref }}
+```
+
+In case, you already have run_id, you can pass it this way:
+
+```yaml
+- name: Wait for Workflow Action
+  uses:  kamilchodola/wait-for-workflow-action@v1
+  with:
+    GITHUB_TOKEN: ${{ secrets.REPOSITORY_DISPATCH_TOKEN }}
+    workflow_id: 'workflow_name.yml'
+    run_id: '123123'
     organization: 'your-organization'
     repository: 'your-repository'
     ref: ${{ github.ref }}
