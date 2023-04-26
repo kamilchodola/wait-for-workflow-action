@@ -11,7 +11,7 @@ This GitHub Action waits for a specified workflow to complete before proceeding 
 | `GITHUB_TOKEN`   | GitHub token to access the repository and its APIs  | Yes      |         |
 | `workflow_id`    | ID of the workflow to wait for                      | No       |         |
 | `run_id`         | If provided will wait for workflow run with specified id                     | No       |         |
-| `max_wait_minutes`| Maximum wait time in minutes before giving up      | No       | 3       |
+| `max_wait_minutes`| Maximum wait time in minutes before giving up      | No       | 5       |
 | `organization`   | Organization name where the repository is located   | Yes      |         |
 | `repository`     | Repository name to monitor for the workflow run     | Yes      |         |
 | `ref`            | Branch reference to watch for the workflow run      | No       |         |
