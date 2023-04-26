@@ -15,7 +15,7 @@ jobs:
       - name: Trigger another workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow_id: your-workflow-id
+          workflow: to_be_triggered
           token: ${{ secrets.REPOSITORY_DISPATCH_TOKEN }}
           ref: main
 
