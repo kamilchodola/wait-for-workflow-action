@@ -6,7 +6,10 @@ inputs:
     required: true
   workflow_id:
     description: 'ID of the workflow to wait for'
-    required: true
+    required: false
+  run_id:
+    description: 'If provided will wait for workflow run with specified id'
+    required: false
   max_wait_minutes:
     description: 'Maximum time script will wait to workflow run to be found in minutes'
     required: true
