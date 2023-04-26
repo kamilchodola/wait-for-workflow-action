@@ -26,7 +26,7 @@ jobs:
         with:
           workflow: to_be_triggered.yml
           token: ${{ secrets.REPOSITORY_DISPATCH_TOKEN }}
-          ref: main
+          ref: "${{ inputs.ref || github.ref }}"
 
       - name: Wait for the triggered workflow to complete
         run: |
@@ -37,5 +37,5 @@ jobs:
           export MAX_WAIT_MINUTES="3"
           export ORG_NAME="kamilchodola"
           export REPO_NAME="wait-for-workflow-action"
-          export REF="${{ inputs.ref }}"
+          export REF="${{ inputs.ref || github.ref }}"
           ./scripts/wait-for-workflow.sh
