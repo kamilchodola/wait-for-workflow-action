@@ -7,10 +7,8 @@ counter=0
 # Get the current time in ISO 8601 format
 current_time=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-# If REF is empty, use github.ref
-if [ -z "$REF" ]; then
-  REF="${GITHUB_REF}"
-else
+# Check if REF has the prefix "refs/heads/" and append it if not
+if [[ ! "$REF" =~ ^refs/heads/ ]]; then
   REF="refs/heads/$REF"
 fi
 
