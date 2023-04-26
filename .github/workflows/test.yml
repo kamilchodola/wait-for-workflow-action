@@ -34,7 +34,7 @@ jobs:
           export GITHUB_TOKEN="${{ secrets.REPOSITORY_DISPATCH_TOKEN }}"
           export WORKFLOW_ID="to_be_triggered.yml"
           export RUN_ID="${{ inputs.run_id }}"
-          export MAX_WAIT_MINUTES="3"
+          export MAX_WAIT_MINUTES="5"
           export ORG_NAME="kamilchodola"
           export REPO_NAME="wait-for-workflow-action"
           export REF="${{ inputs.ref }}"
