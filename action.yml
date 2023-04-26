@@ -17,6 +17,10 @@ inputs:
   repo_name:
     description: 'GitHub repository name'
     required: true
+  ref:
+    description: 'Branch reference'
+    required: false
+    default: ''
 runs:
   using: 'composite'
   steps:
@@ -26,3 +30,6 @@ runs:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         WORKFLOW_ID: ${{ inputs.workflow_id }}
         MAX_WAIT_MINUTES: ${{ inputs.max_wait_minutes }}
+        ORG_NAME: ${{ inputs.organization }}
+        REPO_NAME: ${{ inputs.repository }}
+        REF: ${{ inputs.ref }
