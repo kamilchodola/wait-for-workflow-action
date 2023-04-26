@@ -46,4 +46,4 @@ runs:
         TIMEOUT: ${{ inputs.timeout }}
         ORG_NAME: ${{ inputs.organization }}
         REPO_NAME: ${{ inputs.repository }}
-        REF: ${{ inputs.ref }
+        REF: ${{ inputs.ref || github.ref }}
