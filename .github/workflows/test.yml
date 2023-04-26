@@ -23,7 +23,7 @@ jobs:
         run: |
           chmod +x scripts/wait-for-workflow.sh
           export GITHUB_TOKEN="${{ secrets.REPOSITORY_DISPATCH_TOKEN }}"
-          export WORKFLOW_ID="to_be_triggered"
+          export WORKFLOW_ID="to_be_triggered.yml"
           export MAX_WAIT_MINUTES="3"
           export ORG_NAME="kamilchodola"
           export REPO_NAME="wait-for-workflow-action"
