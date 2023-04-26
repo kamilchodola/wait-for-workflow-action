@@ -1,0 +1,35 @@
+name: 'Wait for Workflow Action'
+description: 'Waits for a specified workflow to complete before proceeding'
+inputs:
+  GITHUB_TOKEN:
+    description: 'GitHub token to access the repository'
+    required: true
+  workflow_id:
+    description: 'ID of the workflow to wait for'
+    required: true
+  max_wait_minutes:
+    description: 'Maximum time script will wait to workflow run to be found in minutes'
+    required: true
+    default: '5'
+  org_name:
+    description: 'GitHub organization name'
+    required: true
+  repo_name:
+    description: 'GitHub repository name'
+    required: true
+  ref:
+    description: 'Branch reference (if empty, ref selected for trigger would be taken)'
+    required: false
+    default: ''
+runs:
+  using: 'composite'
+  steps:
+    - run: ${{ github.action_path }}/scripts/wait-for-workflow.sh
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        WORKFLOW_ID: ${{ inputs.workflow_id }}
+        MAX_WAIT_MINUTES: ${{ inputs.max_wait_minutes }}
+        ORG_NAME: ${{ inputs.organization }}
+        REPO_NAME: ${{ inputs.repository }}
+        REF: ${{ inputs.ref }

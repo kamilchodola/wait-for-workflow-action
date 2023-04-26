@@ -1,0 +1,31 @@
+name: Test WaitForWorkflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_workflow_dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Trigger another workflow
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow_id: your-workflow-id
+          token: ${{ secrets.REPOSITORY_DISPATCH_TOKEN }}
+          ref: main
+
+      - name: Wait for the triggered workflow to complete
+        run: |
+          chmod +x wait-for-workflow.sh
+          export GITHUB_TOKEN="${{ secrets.REPOSITORY_DISPATCH_TOKEN }}"
+          export WORKFLOW_ID="your-workflow-id"
+          export MAX_WAIT_MINUTES="3"
+          export ORG_NAME="kamilchodola"
+          export REPO_NAME="wait-for-workflow-action"
+          export REF="main"
+          ./wait-for-workflow.sh

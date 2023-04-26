@@ -1,0 +1,17 @@
+name: Triggered Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  triggered_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run a basic shell script
+        run: |
+          echo "Starting triggered workflow..."
+          sleep 60
+          echo "Triggered workflow completed successfully!"
