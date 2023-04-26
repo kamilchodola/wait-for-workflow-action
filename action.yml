@@ -32,6 +32,7 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         WORKFLOW_ID: ${{ inputs.workflow_id }}
+        RUN_ID: ${{ inputs.run_id }}
         MAX_WAIT_MINUTES: ${{ inputs.max_wait_minutes }}
         ORG_NAME: ${{ inputs.organization }}
         REPO_NAME: ${{ inputs.repository }}
