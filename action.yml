@@ -12,15 +12,15 @@ inputs:
     required: false
   max_wait_minutes:
     description: 'Maximum time script will wait to workflow run to be found in minutes'
-    required: true
+    required: false
     default: '5'
   interval:
-    description: 'Interval in seconds which will be used for GitHub API calls.'
-    required: true
+    description: 'Interval in seconds which will be used for GitHub API calls'
+    required: false
     default: '10'
   timeout:
     description: 'Maximum time script will wait to workflow run to be finished'
-    required: true
+    required: false
     default: '30'
   org_name:
     description: 'GitHub organization name'
