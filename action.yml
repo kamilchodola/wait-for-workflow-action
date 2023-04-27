@@ -1,4 +1,6 @@
 name: 'Wait for Workflow Action'
+icon: clock
+style="background-color: #C2E3F6"
 description: 'Waits for a specified workflow to complete before proceeding'
 inputs:
   GITHUB_TOKEN:
