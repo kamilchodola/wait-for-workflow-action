@@ -36,7 +36,7 @@ jobs:
           export RUN_ID="${{ inputs.run_id }}"
           export MAX_WAIT_MINUTES="2"
           export INTERVAL="5"
-          export TIMEOUT="2"
+          export TIMEOUT="5"
           export ORG_NAME="kamilchodola"
           export REPO_NAME="wait-for-workflow-action"
           export REF="${{ inputs.ref || github.ref }}"
