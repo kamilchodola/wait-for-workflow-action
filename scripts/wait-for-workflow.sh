@@ -2,6 +2,8 @@
 
 # Set the maximum waiting time (in minutes) and initialize the counter
 max_wait_minutes="${MAX_WAIT_MINUTES}"
+timeout="${TIMEOUT}"
+interval="${INTERVAL}"
 counter=0
 
 # Get the current time in ISO 8601 format
@@ -18,6 +20,8 @@ echo "ℹ️ Organization: ${ORG_NAME}"
 echo "ℹ️ Repository: ${REPO_NAME}"
 echo "ℹ️ Reference: $REF"
 echo "ℹ️ Maximum wait time: ${max_wait_minutes} minutes"
+echo "ℹ️ Timeout for the workflow to complete: ${timeout} minutes"
+echo "ℹ️ Interval between checks: ${interval} seconds"
 
 # If RUN_ID is not empty, use it directly
 if [ -n "${RUN_ID}" ]; then
@@ -49,16 +53,17 @@ else
 
     # Increment the counter and check if the maximum waiting time is reached
     counter=$((counter + 1))
-    if [ $((counter * 30)) -ge $((max_wait_minutes * 60)) ]; then
+    if [ $((counter * $interval)) -ge $((max_wait_minutes * 60)) ]; then
       echo "❌ Maximum waiting time for the workflow to be triggered has been reached. Exiting."
       exit 1
     fi
 
-    sleep 30
+    sleep $interval
   done
 fi
 
 # Wait for the triggered workflow to complete and check its conclusion
+timeout_counter=0
 while true; do
   echo "⌛ Waiting for the workflow to complete..."
   run_data=$(curl -s -H "Accept: application/vnd.github+json" -H "Authorization: token $GITHUB_TOKEN" \
@@ -75,5 +80,13 @@ while true; do
       break
     fi
   fi
-  sleep 30
+
+  # Increment the timeout counter and check if the timeout has been reached
+  timeout_counter=$((timeout_counter + 1))
+  if [ $((timeout_counter * interval)) -ge $((timeout * 60)) ]; then
+    echo "❌ Timeout waiting for the workflow to complete. Exiting."
+    exit 1
+  fi
+
+  sleep $interval
 done

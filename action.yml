@@ -15,8 +15,16 @@ inputs:
     required: false
   max_wait_minutes:
     description: 'Maximum time script will wait to workflow run to be found in minutes'
-    required: true
+    required: false
     default: '5'
+  interval:
+    description: 'Interval in seconds which will be used for GitHub API calls'
+    required: false
+    default: '10'
+  timeout:
+    description: 'Maximum time script will wait to workflow run to be finished'
+    required: false
+    default: '30'
   org_name:
     description: 'GitHub organization name'
     required: true
@@ -37,6 +45,8 @@ runs:
         WORKFLOW_ID: ${{ inputs.workflow_id }}
         RUN_ID: ${{ inputs.run_id }}
         MAX_WAIT_MINUTES: ${{ inputs.max_wait_minutes }}
+        INTERVAL: ${{ inputs.interval }}
+        TIMEOUT: ${{ inputs.timeout }}
         ORG_NAME: ${{ inputs.organization }}
         REPO_NAME: ${{ inputs.repository }}
-        REF: ${{ inputs.ref }
+        REF: ${{ inputs.ref || github.ref }}
