@@ -38,6 +38,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Set execute permissions for script
+      run: chmod +x ${{ github.action_path }}/scripts/wait-for-workflow.sh
+      shell: bash
     - run: ${{ github.action_path }}/scripts/wait-for-workflow.sh
       shell: bash
       env:
