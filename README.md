@@ -43,7 +43,7 @@ To use this action, add it to your workflow file with the appropriate inputs:
 
 ```yaml
 - name: Wait for Workflow Action
-  uses:  kamilchodola/wait-for-workflow-action@v1
+  uses: kamilchodola/wait-for-workflow-action@1.1.0
   with:
     GITHUB_TOKEN: ${{ secrets.REPOSITORY_DISPATCH_TOKEN }}
     workflow_id: 'workflow_name.yml'
@@ -52,21 +52,21 @@ To use this action, add it to your workflow file with the appropriate inputs:
     timeout: '60'
     organization: 'your-organization'
     repository: 'your-repository'
-    ref: ${{ github.ref }}
+    ref: '${{ github.ref }}'
 ```
 
 In case, you already have run_id, you can pass it this way:
 
 ```yaml
 - name: Wait for Workflow Action
-  uses:  kamilchodola/wait-for-workflow-action@v1
+  uses: kamilchodola/wait-for-workflow-action@1.1.0
   with:
     GITHUB_TOKEN: ${{ secrets.REPOSITORY_DISPATCH_TOKEN }}
     workflow_id: 'workflow_name.yml'
     run_id: '123123'
     organization: 'your-organization'
     repository: 'your-repository'
-    ref: ${{ github.ref }}
+    ref: '${{ github.ref }}'
 ```
 
 ## Notes
