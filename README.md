@@ -14,8 +14,8 @@ This GitHub Action waits for a specified workflow to complete before proceeding 
 | `max_wait_minutes`| Maximum time script will wait to workflow run to be found in minutes      | No       | 5       |
 | `interval`| Interval in seconds which will be used for GitHub API calls      | No       | 10       |
 | `timeout`| Maximum time script will wait to workflow run to be finished      | No       | 30       |
-| `organization`   | Organization name where the repository is located   | Yes      |         |
-| `repository`     | Repository name to monitor for the workflow run     | Yes      |         |
+| `org_name`   | Organization name where the repository is located   | Yes      |         |
+| `repo_name`     | Repository name to monitor for the workflow run     | Yes      |         |
 | `ref`            | Branch reference to watch for the workflow run      | No       |         |
 
 ## How It Works
@@ -50,8 +50,8 @@ To use this action, add it to your workflow file with the appropriate inputs:
     max_wait_minutes: '3'
     interval: '5'
     timeout: '60'
-    organization: 'your-organization'
-    repository: 'your-repository'
+    org_name: 'your-organization'
+    repo_name: 'your-repository'
     ref: '${{ github.ref }}'
 ```
 
@@ -64,8 +64,8 @@ In case, you already have run_id, you can pass it this way:
     GITHUB_TOKEN: ${{ secrets.REPOSITORY_DISPATCH_TOKEN }}
     workflow_id: 'workflow_name.yml'
     run_id: '123123'
-    organization: 'your-organization'
-    repository: 'your-repository'
+    org_name: 'your-organization'
+    repo_name: 'your-repository'
     ref: '${{ github.ref }}'
 ```
 
