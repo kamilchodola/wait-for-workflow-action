@@ -27,10 +27,12 @@ inputs:
     default: '30'
   org_name:
     description: 'GitHub organization name'
-    required: true
+    required: false
+    default: ''
   repo_name:
     description: 'GitHub repository name'
-    required: true
+    required: false
+    default: ''
   ref:
     description: 'Branch reference (if empty, ref selected for trigger would be taken)'
     required: false
@@ -47,6 +49,6 @@ runs:
         MAX_WAIT_MINUTES: ${{ inputs.max_wait_minutes }}
         INTERVAL: ${{ inputs.interval }}
         TIMEOUT: ${{ inputs.timeout }}
-        ORG_NAME: ${{ inputs.org_name }}
-        REPO_NAME: ${{ inputs.repo_name }}
+        ORG_NAME: ${{ inputs.org_name || github.context.repo.owner }}
+        REPO_NAME: ${{ inputs.repo_name || github.context.repo.repo }}
         REF: ${{ inputs.ref || github.ref }}

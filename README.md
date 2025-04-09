@@ -14,8 +14,8 @@ This GitHub Action waits for a specified workflow to complete before proceeding 
 | `max_wait_minutes`| Maximum time script will wait to workflow run to be found in minutes      | No       | 5       |
 | `interval`| Interval in seconds which will be used for GitHub API calls      | No       | 10       |
 | `timeout`| Maximum time script will wait to workflow run to be finished      | No       | 30       |
-| `org_name`   | Organization name where the repository is located   | Yes      |         |
-| `repo_name`     | Repository name to monitor for the workflow run     | Yes      |         |
+| `org_name`   | Organization name where the repository is located   | No       | Current organization        |
+| `repo_name`     | Repository name to monitor for the workflow run     | No       | Current repository        |
 | `ref`            | Branch reference to watch for the workflow run      | No       |         |
 
 ## How It Works
